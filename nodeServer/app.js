@@ -4,10 +4,8 @@ var http = require("http").createServer(app);
 var io = require("socket.io")(http,{ origins: '*:*'});
 const port = 80;
 var cors = require("cors");
-grupos = [];
-
 app.use(cors());
-
+var grupos = [];
 
 app.use("/grupos",(req,res)=>{
     if(grupos.length > 0)
@@ -31,7 +29,11 @@ app.use("*",(req,res)=>{
 
 
 io.on("connection",(socket)=>{
-    console.log("Nuevo Socket conectado.");
+    socket.on("message",(datos)=>{
+        console.log(datos);
+    });
+
+
 })
 
 

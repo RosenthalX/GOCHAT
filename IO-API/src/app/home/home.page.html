@@ -7,22 +7,10 @@
 
   <ion-list>
     <ion-item>
-     TIPO: {{prueba.tipo}}
+      <input type="text" class="mensaje" value="" placeholder="MENSAJE"/>
     </ion-item>
-    <ion-item>
-      DATOS: {{prueba.datos}}
-     </ion-item>
-     <ion-item>
-      DE: {{prueba.de}}
-     </ion-item>
-     <ion-item>
-      PARA: {{prueba.para}}
-     </ion-item>
-     <ion-item>
-      FECHA: {{prueba.fecha}}
-     </ion-item>
   </ion-list>
-  <ion-button (click)=conectar()>
+  <ion-button>
     Conectar a socket
   </ion-button>
 </ion-content>

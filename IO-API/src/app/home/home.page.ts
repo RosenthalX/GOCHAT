@@ -11,11 +11,8 @@ export class HomePage {
   prueba:Message;
 
   constructor(private network:ConectionService) {
-    this.prueba = new Message({de:"richi",para:"richi para"});
-  }
-
-  conectar(){
-    this.network.start();
   }//
+
+
 
 }////

@@ -3,6 +3,7 @@ export class Message {
     datos:string;
     de:string;
     para:string;
+    grupo:number;
     fecha:string;
 
 
@@ -11,6 +12,7 @@ export class Message {
         this.datos = (obj && obj.datos) || "";
         this.de = (obj && obj.de) || "";
         this.para =  (obj && obj.para) || "";
+        this.grupo = (obj && obj.grupo) || 1;
         this. fecha = (obj && obj.fecha) || ""+new Date();
     }//
 }

@@ -1,3 +1,4 @@
+import { ConectionService } from './Servicios/conection.service';
 import { Component } from '@angular/core';
 
 import { Platform } from '@ionic/angular';
@@ -11,6 +12,7 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 })
 export class AppComponent {
   constructor(
+    private network:ConectionService,
     private platform: Platform,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar
@@ -22,6 +24,7 @@ export class AppComponent {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
+      this.network.start();
     });
   }
 }
