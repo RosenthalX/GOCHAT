@@ -1,11 +1,3 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
@@ -13,8 +5,24 @@
     </ion-toolbar>
   </ion-header>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+  <ion-list>
+    <ion-item>
+     TIPO: {{prueba.tipo}}
+    </ion-item>
+    <ion-item>
+      DATOS: {{prueba.datos}}
+     </ion-item>
+     <ion-item>
+      DE: {{prueba.de}}
+     </ion-item>
+     <ion-item>
+      PARA: {{prueba.para}}
+     </ion-item>
+     <ion-item>
+      FECHA: {{prueba.fecha}}
+     </ion-item>
+  </ion-list>
+  <ion-button (click)=conectar()>
+    Conectar a socket
+  </ion-button>
 </ion-content>

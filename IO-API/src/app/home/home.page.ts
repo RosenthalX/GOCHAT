@@ -1,3 +1,5 @@
+import { ConectionService } from './../Servicios/conection.service';
+import { Message } from './../Clases/message';
 import { Component } from '@angular/core';
 
 @Component({
@@ -6,7 +8,14 @@ import { Component } from '@angular/core';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
+  prueba:Message;
 
-  constructor() {}
+  constructor(private network:ConectionService) {
+    this.prueba = new Message({de:"richi",para:"richi para"});
+  }
 
-}
+  conectar(){
+    this.network.start();
+  }//
+
+}////
