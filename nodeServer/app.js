@@ -5,7 +5,8 @@ var io = require("socket.io")(http,{ origins: '*:*'});
 const port = 80;
 var cors = require("cors");
 app.use(cors());
-var grupos = [];
+
+var bodega = require("./procesamientos");
 
 app.use("/grupos",(req,res)=>{
     if(grupos.length > 0)
@@ -27,10 +28,12 @@ app.use("*",(req,res)=>{
 
 
 
-
 io.on("connection",(socket)=>{
     socket.on("message",(datos)=>{
-        console.log(datos);
+        if(datos.tipo == 5)
+            bodega.nuevoUsuario(socket,datos,0);
+        else if(datos.tipo == 6)
+            bodega.nuevoMaster(datos);
     });
 
 
