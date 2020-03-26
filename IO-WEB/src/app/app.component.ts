@@ -1,3 +1,4 @@
+import { ConectionService } from './Servicios/conection.service';
 import { Component } from '@angular/core';
 
 @Component({
@@ -7,4 +8,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'IO-WEB';
+
+  constructor(private con:ConectionService){
+    this.con.start();
+  }
 }
