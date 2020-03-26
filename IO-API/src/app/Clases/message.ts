@@ -5,6 +5,7 @@ export class Message {
     para:string;
     grupo:number;
     fecha:string;
+    solicitud:number;
 
 
     constructor(obj?:any){
@@ -13,6 +14,7 @@ export class Message {
         this.de = (obj && obj.de) || "";
         this.para =  (obj && obj.para) || "";
         this.grupo = (obj && obj.grupo) || 1;
-        this. fecha = (obj && obj.fecha) || ""+new Date();
+        this.fecha = (obj && obj.fecha) || ""+new Date();
+        this.solicitud = (obj && obj.solicitud) || 0;
     }//
 }

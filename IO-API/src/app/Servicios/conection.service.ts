@@ -27,12 +27,12 @@ export class ConectionService {
 
     this.socket.on("reconnect",()=>{
       console.log("Socket reconectado");
-    })
+    });
     
     this.socket.on("disconnect",()=>{
       console.log("Socket desconectado");
       this.isConnect = false;
-    })
+    });
     
   }//
 }///

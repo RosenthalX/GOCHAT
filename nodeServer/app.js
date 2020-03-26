@@ -8,11 +8,28 @@ app.use(cors());
 
 var bodega = require("./procesamientos");
 
-app.use("/grupos",(req,res)=>{
+app.use("/maestros", (req, res)=>{
+    grupos = bodega.getMaestros();
     if(grupos.length > 0)
-    res.status(200).send(grupos.json);
+    res.status(200).send("Existen : "+grupos.length+" maestros.");
+    else
+    res.status(200).send("No hay maestros");
+})
+
+app.use("/grupos",(req,res)=>{
+    grupos = bodega.getGrupos();
+    if(grupos.length > 0)
+    res.status(200).send("Existen : "+grupos.length+" grupos.");
     else
     res.status(200).send("No hay grupos");
+});
+
+app.use("/usuarios",(req,res)=>{
+    grupos = bodega.getUsuarios();
+    if(grupos.length > 0)
+    res.status(200).send("Existen : "+grupos.length+" usuarios.");
+    else
+    res.status(200).send("No hay usuarios");
 });
 
 app.use("/disponibles",(req,res)=>{
