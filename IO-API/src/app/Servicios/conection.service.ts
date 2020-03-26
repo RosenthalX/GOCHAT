@@ -1,5 +1,5 @@
 import { Message } from './../Clases/message';
-import { Injectable } from '@angular/core';
+import { Injectable , Inject } from '@angular/core';
 import * as io from "socket.io-client";
 import { from } from 'rxjs';
 
@@ -13,11 +13,11 @@ export class ConectionService {
   private destino:string = "";
   private grupo:string = "";
   isConnect:boolean = false;
-  constructor() { }
+  constructor(@Inject("APP_LINK") private link:string) { }
 
   start(){
     if(this.isConnect == false)
-    this.socket = io.connect("http://10.8.3.241");
+    this.socket = io.connect(this.link);
     this.socket.on("connect",()=>{
       const mens:Message = new Message({tipo:5,de:this.usuario});
       console.log(mens);

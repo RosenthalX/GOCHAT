@@ -17,7 +17,8 @@ import { AppRoutingModule } from './app-routing.module';
   providers: [
     StatusBar,
     SplashScreen,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    { provide: "APP_LINK", useValue: "http://10.8.3.241" }
   ],
   bootstrap: [AppComponent]
 })
