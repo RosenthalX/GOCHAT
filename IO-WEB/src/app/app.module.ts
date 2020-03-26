@@ -1,3 +1,4 @@
+import { FormsModule , ReactiveFormsModule } from '@angular/forms';
 import { ConectionService } from './Servicios/conection.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -7,6 +8,7 @@ import { AppComponent } from './app.component';
 import { NavComponent } from './Components/nav/nav.component';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -14,7 +16,9 @@ import { NavComponent } from './Components/nav/nav.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     {provide:"APP_LINK", useValue: "http://10.8.3.241"},

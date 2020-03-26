@@ -10,6 +10,8 @@ limiteGC = 5;
 function generarGrupo(maestro,usuario,solicitud){
     const id = Date.now();
     grupos.push({maestro:maestro,usuario:usuario,solicitud:solicitud,id:id});
+    maestro.socket.emit("GRUPOID",{message:id});
+    usuario.socket.emit("GRUPOID",{message:id});
     console.log("Grupo creado id "+id);
 };
 
@@ -142,6 +144,27 @@ module.exports.Disconect = function(socket){
         if(maestro.socket == socket){
             console.log("Se ah removido un tipo maestro en index "+index);
             maestros.splice(index,1);
+        }//
+    });
+
+}//
+
+function mensajeNormal(socket,datos){
+    console.log("Enviando datos");
+    console.log(datos);
+    socket.emit("message",datos);
+}//
+
+
+module.exports.procesarMensaje = function(socket,datos){
+    console.log(datos);
+    grupos.forEach((grupo)=>{
+        if(grupo.id == datos.grupo){
+           if(grupo.usuario.socket == socket){
+               mensajeNormal(grupo.maestro.socket,datos);
+            }else{
+                mensajeNormal(grupo.usuario.socket,datos);
+            }; 
         }//
     });
 }//

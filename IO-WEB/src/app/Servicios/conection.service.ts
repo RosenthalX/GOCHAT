@@ -1,6 +1,7 @@
 import { Message } from './../Clases/message';
 import { Injectable, Inject } from '@angular/core';
 import * as io from "socket.io-client";
+import { Observable } from 'rxjs';
 
 
 
@@ -12,6 +13,9 @@ export class ConectionService {
   private usuario:string = "demogorgon";
   private destino:string = "";
   private grupo:string = "";
+  private solicitud:number = 0;
+
+
   isConnect:boolean = false;
   constructor(@Inject("APP_LINK") private link:string) { }
 
@@ -23,6 +27,7 @@ export class ConectionService {
       console.log(mens);
       this.socket.send(mens);
       this.isConnect = true;
+      this.listen("GRUPOID").subscribe((dato)=>{this.grupo = dato.message});
     });
 
     this.socket.on("reconnect",()=>{
@@ -34,5 +39,36 @@ export class ConectionService {
       this.isConnect = false;
     });
     
+
+
   }//
+
+  enviar(dato:Message){
+    if(this.isConnect){
+      this.socket.send(dato);
+    }//
+  }////
+
+  generarMensaje(datos):Message{
+    let msn = new Message();
+    msn.de = this.usuario;
+    msn.para = this.destino;
+    msn.datos = datos;
+    console.log("GRUPO: "+this.grupo);
+    msn.grupo = parseInt(this.grupo);
+    msn.solicitud = this.solicitud;
+    msn.tipo = 0;
+    return msn;
+  }
+
+  listen(evento):Observable<any>{
+    return new Observable((observer)=>{
+      this.socket.on(evento,(datos)=>{
+        observer.next(datos);
+      });
+    });
+  }
+
+
+
 }///

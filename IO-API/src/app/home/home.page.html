@@ -7,10 +7,10 @@
 
   <ion-list>
     <ion-item>
-      <input type="text" class="mensaje" value="" placeholder="MENSAJE"/>
+      <input type="text" class="mensaje" value="" placeholder="MENSAJE" [(ngModel)]="formulario.texto" />
     </ion-item>
   </ion-list>
-  <ion-button>
+  <ion-button (click)="enviar()">
     Conectar a socket
   </ion-button>
 </ion-content>

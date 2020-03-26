@@ -60,6 +60,8 @@ io.on("connection",(socket)=>{
             bodega.nuevoUsuario(socket,datos);
         else if(datos.tipo == 6)
             bodega.nuevoMaestro(socket,datos);
+        else
+            bodega.procesarMensaje(socket,datos);
     });
 
     socket.on("disconnect",()=>{
