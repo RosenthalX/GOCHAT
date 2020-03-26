@@ -12,7 +12,7 @@ export class ConectionService {
   private socket;
   private usuario:string = "demogorgon";
   private destino:string = "";
-  private grupo:string = "";
+  private grupo:string[] = [];
   private solicitud:number = 0;
 
 
@@ -27,7 +27,7 @@ export class ConectionService {
       console.log(mens);
       this.socket.send(mens);
       this.isConnect = true;
-      this.listen("GRUPOID").subscribe((dato)=>{this.grupo = dato.message});
+      this.listen("GRUPOID").subscribe((dato)=>{this.grupo.push(dato.message);});
     });
 
     this.socket.on("reconnect",()=>{
@@ -43,19 +43,23 @@ export class ConectionService {
 
   }//
 
+  obtenerGrupos(){
+    return this.grupo;
+  }
+
   enviar(dato:Message){
     if(this.isConnect){
       this.socket.send(dato);
     }//
   }////
 
-  generarMensaje(datos):Message{
+  generarMensaje(datos,grupo):Message{
     let msn = new Message();
     msn.de = this.usuario;
     msn.para = this.destino;
     msn.datos = datos;
-    console.log("GRUPO: "+this.grupo);
-    msn.grupo = parseInt(this.grupo);
+    console.log("GRUPO: "+grupo);
+    msn.grupo = parseInt(grupo);
     msn.solicitud = this.solicitud;
     msn.tipo = 0;
     return msn;

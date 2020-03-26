@@ -72,6 +72,4 @@ io.on("connection",(socket)=>{
 })
 
 
-http.listen(port,()=>{
-    console.log("Escuchando al puerto "+port);
-});
+module.exports = http;

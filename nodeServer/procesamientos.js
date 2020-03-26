@@ -150,14 +150,14 @@ module.exports.Disconect = function(socket){
 }//
 
 function mensajeNormal(socket,datos){
-    console.log("Enviando datos");
-    console.log(datos);
+    //console.log("Enviando datos");
+    //console.log(datos);
     socket.emit("message",datos);
 }//
 
 
 module.exports.procesarMensaje = function(socket,datos){
-    console.log(datos);
+    //console.log(datos);
     grupos.forEach((grupo)=>{
         if(grupo.id == datos.grupo){
            if(grupo.usuario.socket == socket){

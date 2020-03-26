@@ -1,6 +1,7 @@
 import { ConectionService } from './../../Servicios/conection.service';
 import { Component, OnInit } from '@angular/core';
 import { Message } from '../../Clases/message';
+import {interval} from 'rxjs';
 
 @Component({
   selector: 'app-nav',
@@ -9,18 +10,22 @@ import { Message } from '../../Clases/message';
 })
 export class NavComponent implements OnInit {
   formulario = {texto:""}
+  grupos = [];
   constructor(private con:ConectionService) { }
 
   ngOnInit() {
     this.con.listen("message").subscribe((dato)=>{
       console.log(dato);
     });
-  }
+
+    interval(1000).subscribe(()=>{
+      this.grupos = this.con.obtenerGrupos();
+    });
+  }//
 
   enviar(){
     console.log(this.formulario.texto);
-    if(this.formulario.texto.length>0)
-      this.con.enviar(this.con.generarMensaje(this.formulario.texto));
   }//
 
 }////
+

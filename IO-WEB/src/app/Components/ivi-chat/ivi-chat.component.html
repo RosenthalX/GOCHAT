@@ -1,0 +1,9 @@
+<div class="main-icon" (click)="active()">
+  <div class="chat-icon">
+  {{grupo}}
+</div>
+</div>
+<div class="content-view" [class.content-view-active]="isActive">
+  <h1>CHAT PARA: {{grupo}}</h1>
+</div>
+
