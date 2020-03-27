@@ -1,4 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
+import { fromEvent } from 'rxjs';
+import {map, filter} from 'rxjs/operators';
 
 @Component({
   selector: 'app-ivi-chat',
@@ -11,10 +13,24 @@ export class IviChatComponent implements OnInit {
   @Input("despliege") desp:string = "h";
   @Input("grupo") grupo:string ;
   isActive:boolean = false;
+  formulario = {texto:""};
+  @ViewChild("viewer") private childView:ElementRef;
 
   constructor() { }
 
   ngOnInit() {
+    fromEvent(this.childView.nativeElement,"keyup").pipe(
+      filter(dato => {
+        const key = dato.keyCode;
+        return key == 13;
+      }),
+      map((datos)=>{
+        const dato = ""+datos.target.value;
+        return dato;
+      })
+    ).subscribe((datos)=>{
+      console.log(datos);
+    });
   }
 
 

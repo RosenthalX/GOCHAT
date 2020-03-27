@@ -1,13 +1,18 @@
 .chat-icon{
     position: relative;
-    height: 90%;
-    background-color: red;
-    border:3px solid gray;
-    padding: 0px 12px;
+    height: 98%;
+    border-left: 1px solid white;
+    border-right: 1px solid white;
     color: white;
     font-size: .8rem;
     text-align: center;
+    padding: 5px 10px;
     display: inline-block;
+    font-size: .9rem;
+}
+
+.chat-icon-active{
+    background-color: rgba(20,162,255, 0.9);
 }
 
 .main-icon{
@@ -16,19 +21,113 @@
     display: inline-block;
     overflow-x:visible; 
     white-space: nowrap;   
+    margin-left: 5px;
 }
 
 .content-view{
     position: absolute;
-    top:100;
+    bottom: 100%;
+    left: 0.5%;
     height: 400px;
     width: 95.5%;
-    background-color: white;
+    background-color:white;
     border: 1px solid black;
     z-index:506;
-    opacity: 0.01;
+    opacity: 0.0;
+    display: none;
 }
 
 .content-view-active{
     opacity: 1.0;
+    display: block;
+    animation-duration: 5s;
+    animation: chatin;
+}
+
+.no-select{
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+}
+
+.unramp{
+    white-space: nowrap;
+    margin-left: 5px;
+    position: relative;
+}
+.content-ico{
+    padding-left: 40px;
+}
+
+
+.img-ico{
+    position: absolute;
+    display: inline-block;
+    
+    left: 3%;
+    top: 10;
+    width: 20px;
+    height: 75%;
+}
+.mouse-ico{
+    cursor: url("/assets/cursor3.cur"),auto;
+}
+
+.messenger{
+    position: absolute;
+    width: 96%;
+    height: 80%;
+    bottom: 0;
+    left: 2%;
+    background-color:green;
+}
+
+.messenger-space{
+    position: absolute;
+    width: 100%;
+    height: 90%;
+    top: 0;
+    left: 0;
+    background-color: white;
+}
+
+.messenger-bar{
+    position: absolute;
+    width: 100%;
+    height: 10%;
+    bottom: 0;
+    left: 0;
+    background-color:white;
+}
+
+.messenger-bar input{
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 90%;
+    height: 100%;
+    color:black;
+    z-index: 504;
+    font-size: 1.1rem;
+    text-align: center;
+}
+
+.messenger-bar img{
+    position: absolute;
+    right: .1%;
+    bottom: 0;
+    z-index: 503;
+    width: 9.3%;
+    height:100%;
+    align-items: center;
+    border: 0px solid black;
+    background-color: white;
+    opacity: .3;
+    
+
+}
+
+@keyframes chatin{
+    from {transform: translateY(-20px);}
+    to {tarnsform: translateY(0px);}
 }

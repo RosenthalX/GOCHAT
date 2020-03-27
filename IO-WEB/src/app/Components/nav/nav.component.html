@@ -3,6 +3,7 @@
 <input type="text" value="" placeholder="Ingrese mensaje" [(ngModel)] = "formulario.texto"/>
 <button (click)="enviar()">Enviar datos.</button>
 
-<div style="position: relative;height: 40px; width: 100%;background-color: red;z-index:505;overflow-x: visible;white-space:nowrap;">
+<div class="contenedor-ivi">
+    <img src="/assets/icon-world-wire.png"/>
     <div *ngIf="grupos"><app-ivi-chat *ngFor="let grupo of grupos" [grupo]="grupo"></app-ivi-chat></div>
 </div>

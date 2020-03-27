@@ -1,9 +1,20 @@
-<div class="main-icon" (click)="active()">
-  <div class="chat-icon">
+<div class="main-icon no-select mouse-ico" (click)="active()">
+  <div class="chat-icon no-select" [class.chat-icon-active]="isActive">
   {{grupo}}
 </div>
 </div>
 <div class="content-view" [class.content-view-active]="isActive">
-  <h1>CHAT PARA: {{grupo}}</h1>
+  <h1 class="no-select nowrap icons content-ico" style="position: relative;"><img src="/assets/chat-icon.png" class="img-ico"/> <p style="margin-left: 20px;">CHAT PARA: {{grupo}}</p></h1>
+
+  <div class="messenger">
+    <div class="messenger-space">
+
+    </div>
+    <div class="messenger-bar">
+      <input type="text" value="" placeholder="Mensaje a {{grupo}}." [(ngModel)]="formulario.texto" #viewer name="viewer" id="viewer" />
+      <img src="/assets/icon-world-wire.png" />
+    </div>
+  </div>
+
 </div>
 
